@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ccc;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.apply_box {
+  max-width: 600px;
+  padding: 20px;
+  background-color: white;
+  margin: 50px auto;
+  box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.1);
+  border-radius: 10px;
+}
+
+.title_small {
+  font-size: 20px;
+}
+
+.form_container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.form_control {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline-color: red;
+}
+
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+button {
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 8px;
+  transition: 0.3s ease-in;
+}
+
+button:hover {
+  background-color: #ccc;
+  border: 2px solid red;
+  color: black;
+  cursor: pointer;
+}
+
+.textarea_control {
+  grid-column: 1 / span 2;
+}
+
+.textarea_control textarea {
+  width: 100%;
+}
+
+@media (max-width: 460px) {
+  .textarea_control {
+    grid-column: 1 / span 1;
+  }
+}
+
+
+/* General reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ccc;
+  padding: 30px;
+}
+
+.container {
+  background: #fffaf0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word;
+  background-color: #f9f9f9;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+td {
+  background-color: #fff;
+}
+
+td a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #aaa;
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  td:nth-of-type(1)::before { content: "Name"; }
+  td:nth-of-type(2)::before { content: "Job Role"; }
+  td:nth-of-type(3)::before { content: "Date"; }
+  td:nth-of-type(4)::before { content: "Status"; }
+  td:nth-of-type(5)::before { content: "CV"; }
+}
+
+
+/* ===== Admin Table Styling ===== */  /* Responsive for smaller devices */
+/* table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f44336;
+  color: white;
+  text-transform: uppercase;
+}
+
+td a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
+
+td select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #999;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+} */
+
+

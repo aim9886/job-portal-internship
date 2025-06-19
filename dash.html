@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <div class="container apply_box">
+    <h2>Admin Panel - Applications</h2>
+    <p><a href="./index.html">← Back to Job Application Form</a></p>
+    <table id="applicationsTable" border="1" cellspacing="0" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Job Role</th>
+      <th>City</th>
+      <th>Pincode</th>
+      <th>Date</th>
+      <th>CV</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Dynamic Rows -->
+  </tbody>
+</table>
+
+<script>
+  const applications = JSON.parse(localStorage.getItem("applications") || "[]");
+  const tableBody = document.querySelector('#applicationsTable tbody');
+
+  function renderTable() {
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    applications.forEach((app, index) => {
+      const row = document.createElement('tr');
+
+      const status = app.status || "Applied";
+
+row.innerHTML = `
+  <td data-label="Name">${app.first_name || ""} ${app.last_name || ""}</td>
+  <td data-label="Email">${app.email || ""}</td>
+  <td data-label="Job Role">${app.job_role || ""}</td>
+  <td data-label="City">${app.city || ""}</td>
+  <td data-label="Pincode">${app.pincode || ""}</td>
+  <td data-label="Date">${app.date || ""}</td>
+  <td data-label="CV"><a href="${app.uploadURL || "#"}" target="_blank">${app.upload || "No file"}</a></td>
+  <td data-label="Status">${status}</td>
+  <td data-label="Action">
+    <select onchange="updateStatus(${index}, this.value)">
+      <option value="Applied" ${status === "Applied" ? "selected" : ""}>Applied</option>
+      <option value="In Review" ${status === "In Review" ? "selected" : ""}>In Review</option>
+      <option value="Accepted" ${status === "Accepted" ? "selected" : ""}>Accepted</option>
+      <option value="Rejected" ${status === "Rejected" ? "selected" : ""}>Rejected</option>
+    </select>
+  </td>
+`;
+
+
+
+      tableBody.appendChild(row);
+    });
+  }
+
+  function updateStatus(index, newStatus) {
+    applications[index].status = newStatus;
+    localStorage.setItem("applications", JSON.stringify(applications));
+    renderTable();
+  }
+
+  renderTable();
+</script>
+
+</body>
+</html>

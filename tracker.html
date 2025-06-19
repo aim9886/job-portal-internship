@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application Tracker</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="container apply_box">
+    <h2>Application Tracker</h2>
+    <p><a href="./index.html">← Back to Job Application Form</a></p>
+
+    <table id="userApplicationsTable" border="1" cellspacing="0" cellpadding="10">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Job Role</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>CV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Application data will be populated here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const applications = JSON.parse(localStorage.getItem("applications") || "[]");
+    const tbody = document.querySelector("#userApplicationsTable tbody");
+
+    applications.forEach((app) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${app.first_name || ""} ${app.last_name || ""}</td>
+        <td>${app.job_role || ""}</td>
+        <td>${app.date || ""}</td>
+        <td>${app.status || "Pending"}</td>
+        <td><a href="${app.uploadURL || "#"}" target="_blank">${app.upload || "No file"}</a></td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
